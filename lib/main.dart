@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_resolve/notes.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,12 +16,12 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.black87,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.deepPurple,
           foregroundColor: Colors.white,
           elevation: 0,
         ),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Colors.deepPurple,
           foregroundColor: Colors.white,
         ),
@@ -30,11 +33,11 @@ class MyApp extends StatelessWidget {
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(color: Colors.deepPurple),
+            borderSide: const BorderSide(color: Colors.deepPurple),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2),
+            borderSide: const BorderSide(color: Colors.deepPurpleAccent, width: 2),
           ),
           filled: true,
           fillColor: Colors.grey[800],
@@ -47,19 +50,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Note {
-  String content;
-  DateTime timestamp;
-  bool isImportant;
-
-  Note({
-    required this.content,
-    required this.timestamp,
-    this.isImportant = false,
-  });
-}
-
 class NoteListScreen extends StatefulWidget {
+  const NoteListScreen({super.key});
+
   @override
   _NoteListScreenState createState() => _NoteListScreenState();
 }
@@ -88,11 +81,11 @@ class _NoteListScreenState extends State<NoteListScreen> {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.grey[900],
-          title: Text('Edit Note', style: TextStyle(color: Colors.white)),
+          title: const Text('Edit Note', style: TextStyle(color: Colors.white)),
           content: TextField(
             controller: noteController,
-            decoration: InputDecoration(hintText: 'Edit your note'),
-            style: TextStyle(color: Colors.white),
+            decoration: const InputDecoration(hintText: 'Edit your note'),
+            style: const TextStyle(color: Colors.white),
           ),
           actions: [
             TextButton(
@@ -106,7 +99,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
                   Navigator.pop(context);
                 }
               },
-              child: Text('Save', style: TextStyle(color: Colors.deepPurple)),
+              child: const Text('Save', style: TextStyle(color: Colors.deepPurple)),
             ),
           ],
         );
@@ -146,7 +139,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
       ),
       body: _selectedIndex == 0 ? _buildNotesList() : _buildSettingsOrAbout(),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'Notes',
@@ -178,17 +171,17 @@ class _NoteListScreenState extends State<NoteListScreen> {
               Expanded(
                 child: TextField(
                   controller: noteController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Enter your note here',
                     prefixIcon: Icon(Icons.note_add, color: Colors.deepPurple),
                   ),
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               FloatingActionButton(
                 onPressed: _addNote,
-                child: Icon(Icons.add),
+                child: const Icon(Icons.add),
               ),
             ],
           ),
@@ -202,7 +195,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
                 onDismissed: (direction) {
                   _removeNote(index);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Note removed'),
                       backgroundColor: Colors.red,
                     ),
@@ -211,19 +204,19 @@ class _NoteListScreenState extends State<NoteListScreen> {
                 background: Container(
                   color: Colors.red,
                   alignment: Alignment.centerRight,
-                  padding: EdgeInsets.only(right: 20),
-                  child: Icon(Icons.delete, color: Colors.white),
+                  padding: const EdgeInsets.only(right: 20),
+                  child: const Icon(Icons.delete, color: Colors.white),
                 ),
                 child: Card(
                   color: Colors.grey[850],
                   child: ListTile(
                     title: Text(
                       notes[index].content,
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
                       'Created on: ${notes[index].timestamp.toLocal().toString().split(' ')[0]}',
-                      style: TextStyle(color: Colors.white70),
+                      style: const TextStyle(color: Colors.white70),
                     ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -262,9 +255,9 @@ class _NoteListScreenState extends State<NoteListScreen> {
 
   Widget _buildSettingsOrAbout() {
     if (_selectedIndex == 1) {
-      return Center(
+      return const Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Text(
             'Settings',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -272,9 +265,9 @@ class _NoteListScreenState extends State<NoteListScreen> {
         ),
       );
     } else {
-      return Center(
+      return const Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Text(
             'About\nThis is a simple note-taking app built with Flutter.\nVersion 1.0',
             textAlign: TextAlign.center,
