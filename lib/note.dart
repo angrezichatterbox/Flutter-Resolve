@@ -1,5 +1,5 @@
 class Note {
-  String? content;
+  String content;
   DateTime timestamp;
   bool isImportant;
 
