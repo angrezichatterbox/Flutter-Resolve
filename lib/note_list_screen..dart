@@ -97,7 +97,6 @@ class _NoteListScreenState extends State<NoteListScreen> {
                   controller: noteControllerText,
                   decoration: const InputDecoration(
                     hintText: 'Enter your note here',
-                    prefixIcon: Icon(Icons.note_add, color: Colors.deepPurple),
                   ),
                   style: TextStyle(color: Colors.white),
                 ),
