@@ -11,12 +11,6 @@ class _NoteListScreenState extends State<NoteListScreen> {
   final TextEditingController noteControllerText = TextEditingController();
   int _selectedIndex = 0;
 
-  void _addNote() {
-    noteController.addNote(noteControllerText.text);
-    noteControllerText.clear();
-    setState(() {});
-  }
-
   void _editNote(int index) {
     noteControllerText.text = noteController.notes[index].content;
     showDialog(
@@ -110,7 +104,9 @@ class _NoteListScreenState extends State<NoteListScreen> {
               ),
               const SizedBox(width: 8),
               FloatingActionButton(
-                onPressed: _addNote,
+                onPressed: () {
+                  
+                },
                 child: const Icon(Icons.add),
               ),
             ],
