@@ -70,7 +70,7 @@ class _NoteListScreenState extends State<NoteListScreen> {
           ),
         ],
       ),
-      body: _buildNotesList(),
+      body: _buildSelectedPage(),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Notes'),
@@ -83,6 +83,19 @@ class _NoteListScreenState extends State<NoteListScreen> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  Widget _buildSelectedPage() {
+    switch (_selectedIndex) {
+      case 0:
+        return _buildNotesList();
+      case 1:
+        return _buildSettingsPage();
+      case 2:
+        return _buildAboutPage();
+      default:
+        return _buildNotesList();
+    }
   }
 
   Widget _buildNotesList() {
@@ -104,7 +117,6 @@ class _NoteListScreenState extends State<NoteListScreen> {
               const SizedBox(width: 8),
               FloatingActionButton(
                 onPressed: () {
-                  
                 },
                 child: const Icon(Icons.add),
               ),
@@ -154,6 +166,24 @@ class _NoteListScreenState extends State<NoteListScreen> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildSettingsPage() {
+    return Center(
+      child: Text(
+        'Settings Page',
+        style: TextStyle(color: Colors.white, fontSize: 24),
+      ),
+    );
+  }
+
+  Widget _buildAboutPage() {
+    return Center(
+      child: Text(
+        'About Page',
+        style: TextStyle(color: Colors.white, fontSize: 24),
+      ),
     );
   }
 }
