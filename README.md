@@ -13,12 +13,6 @@ Welcome to the Notes App! This application allows users to create, manage, and o
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
-- Create, edit, and delete notes
-- Organize notes by categories
-- Simple and clean user interface
-- Cross-platform functionality
-
 ## Installation
 
 ### Prerequisites
