@@ -116,4 +116,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
+## **Note:** People could create their own issues and start working on it. The issues created however would be considered under Hack-The-Week only if the issues is considered worthy enough. 
+
 Happy coding, and thanks for contributing to the Notes App during Hacktoberfest! 🎉
